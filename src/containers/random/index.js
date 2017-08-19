@@ -5,8 +5,10 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-  checkWinner,
+	checkWinner,
 } from './randomMap'
+
+import './styles.css'
 
 import { increment } from '../../modules/counter'
 import { fetchRandomCities } from '../map/reducers'
@@ -18,11 +20,11 @@ import raf from "raf";
 
 import {
 	default as React,
-		Component,
+	Component,
 } from "react";
 
 import {
- 	withGoogleMap,
+	withGoogleMap,
 	GoogleMap,
 	Marker,
 } from "react-google-maps";
@@ -34,6 +36,11 @@ const containerStyle = {
 	height: '250px',
 	width: '250px',
 	padding: '10px 0'
+}
+
+const mapElementStyle = { 
+	height: `250px`,
+	width: `250px`
 }
 
 const geolocation = (
@@ -50,8 +57,6 @@ const RandomCity = withGoogleMap(props => {
 
 	return (
 		<div>
-			<i>{props.name}</i>		
-			
 			<GoogleMap defaultZoom={12} center={props.center}>
 				<Marker position={props.center} title={props.name} />
 			</GoogleMap>
@@ -69,33 +74,24 @@ class RandomCityMap extends Component {
 
 	render() {
 		return (
-
-				<div>
-
-					<h5 style={{margin:`10px 0 0 0`}} onClick={this.props.increment} > 
-
-						{this.props.count} {this.props.name} {String(this.props.winner)} {this.props.distance}
-					</h5>
-					<button onClick={() => { this.props.checkWinner(this.props.winner); this.props.fetchRandomCities(); this.props.increment(); }}>{this.props.name} is the closest?</button>
-					
-					<RandomCity
-						containerElement={
-							<div style={containerStyle} />
-						}
-						mapElement={
-							<div style={{ height: `250px`, width: `250px` }} />
-						}
-						center={this.props.center}
-						name={this.props.name}
-						onClick={this.props.increment}
-						
-					/>
-
-
-
-				</div>
-
-		       );
+			<div>
+				{/*<h5 style={{margin:`10px 0 0 0`}} onClick={this.props.increment} > 
+				{this.props.count} {this.props.name} {String(this.props.winner)} {this.props.distance}
+				</h5>*/}
+				<RandomCity
+					containerElement={
+						<div style={containerStyle} />
+					}
+					mapElement={
+						<div style={mapElementStyle} />
+					}
+					center={this.props.center}
+					name={this.props.name}
+					onClick={this.props.increment}						
+				/>
+				<button className='btn' onClick={() => { this.props.checkWinner(this.props.winner); this.props.fetchRandomCities(); }}>Is {this.props.name} the closest?</button>
+			</div>
+		);
 	}
 }
 
@@ -107,16 +103,17 @@ const mapStateToProps = state => {
 	 checkWinner: state.randomMap.winner,
 	})
 }
+
 const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  checkWinner,
-  fetchRandomCities,      
-  changePage: () => push('/about-us')
+	increment,
+	checkWinner,
+	fetchRandomCities,      
+	changePage: () => push('/about-us')
 }, dispatch)
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(RandomCityMap)
 
 

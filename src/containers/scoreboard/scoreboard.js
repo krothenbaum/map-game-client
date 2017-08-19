@@ -16,8 +16,14 @@ class ScoreBoard extends Component {
 	}
 
 	render() {
+		let scores = [];
+		this.props.highScores.map(score => {
+			scores.push(<div><h3>{score.name}</h3><p>{score.score}</p></div>);
+		});
+		
 		return(
 			<div>
+				{scores}
 			</div>
 		);
 	}

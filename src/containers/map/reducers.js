@@ -79,9 +79,8 @@ const geolocation = (
 const calculateWinner = (cities, position) =>{
 	//let yourLat = position.coords.latitude;	
 	//let yourLng = position.coords.longitude;
-	console.log(store.getState());
-	let yourLat = store.getState().yourMap.center.lat;   //probably a better way 
-	let yourLng = store.getState().yourMap.center.lng;
+	const yourLat = store.getState().yourMap.center.lat;   //probably a better way 
+	const yourLng = store.getState().yourMap.center.lng;
 	
 	let distance = 99999999; 
 	let winner = ''; 
@@ -89,12 +88,12 @@ const calculateWinner = (cities, position) =>{
 	cities.forEach( (c) => {
 		////console.log(c.city)
 		////console.log(getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon))
-		let d = getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon); 
+		const d = getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon); 
 		c['distance'] = d; 
 		if(d < distance){
 			distance = d;
-		        winner = c.city	
-		}		
+		  winner = c.city	
+		}
 	})
 	
 	return { 
@@ -124,56 +123,48 @@ function deg2rad(deg) {
 
 
 export const fetchRandomCities = (position) => {
-	//console.log(position);
 	return dispatch => {
 	let cities = [];
 		const fetchA = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
 			.then((response) => {
-				//////console.log(response) 
 				return response.json()
 			})
 			.then((city) => {
-				////console.log(city)
 				cities.push(city)
 			});	  
 
 		const fetchB = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
 			.then((response) => {
-				//////console.log(response) 
 				return response.json()
 			})
 			.then((city) => {
-				////console.log(city)
-				cities.push(city)
 
-			});	
-		const fetchC = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
-			.then((response) => {
-				//////console.log(response) 
-				return response.json()
-			})
-			.then((city) => {
-				////console.log(city)
 				cities.push(city)
 
 			});
-		const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+
+		const fetchC = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
 			.then((response) => {
-				//////console.log(response) 
 				return response.json()
 			})
 			.then((city) => {
-				////console.log(city)
 				cities.push(city)
 
-			});					
+			});
+
+		const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+			.then((response) => {
+				return response.json()
+			})
+			.then((city) => {
+				cities.push(city)
+			});			
+
 		return Promise.all([ fetchA, fetchB, fetchC, fetchD ])
 			.then( values => {
-				dispatch(calculateWinner(cities, position)) 
-				
+				dispatch(calculateWinner(cities, position))				
 		})
 	}
-	//return { type: '', action: ''}	
 }
 
 

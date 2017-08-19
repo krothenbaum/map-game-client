@@ -1,0 +1,18 @@
+.randomMapStyle {
+	display: inline-block;
+	padding: 10px;
+}
+
+.score {
+	display: inline-block;
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+}
+
+.strikes {
+	display: inline-block;
+	width: 150px;
+	height: 50px;
+	font-size: 20px;
+}

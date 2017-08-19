@@ -40,11 +40,6 @@ export const checkWinner = (winner) => {
 	winner ? s=100 : (s=-25, strike++);
 	console.log(store.getState().randomMap.strikes + strike);
 	if(store.getState().randomMap.strikes + strike >= 3) {
-		//then end game
-		// dispatch({
-		// 	type: 'END_GAME'
-		// })
-			
 		gameOver = true;
 	}
 

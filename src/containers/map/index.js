@@ -27,6 +27,7 @@ import {
 } from "react-google-maps";
 
 import ScoreForm from '../scoreform/scoreform'
+import './styles.css'
 
 const geolocation = (
 		canUseDOM && navigator.geolocation ?
@@ -100,35 +101,30 @@ class YourMap extends Component {
 	}
 
 	render() {
-		var rands = [];
-		var cities = this.props.randomCities[0];
+		let rands = [];
+		const cities = this.props.randomCities[0];
 		
 		if(cities){ //There's def a better way.  
 			let winner = null; 
 			cities.forEach((c, i) => {
-											// console.log(c)	
 				c.city == this.props.winner ? winner = true : winner = false;  
-				let center = {'lat':c.lat, 'lng':c.lon} 
-				rands.push(<RandomCityMap  key={i} winner={winner} distance={c.distance} center={center} name={c.city} />);			
+				const center = {'lat':c.lat, 'lng':c.lon} 
+				rands.push(<div className='randomMapStyle'>
+					<RandomCityMap  key={i} winner={winner} distance={c.distance} center={center} name={c.city} />
+				</div>);			
 			})
 		}
+
 		if(this.props.endGame) {
 			return (
 				<div><h1>GAME OVER</h1>
 					<h2>{this.props.score}</h2>
-				{/*score form*/}
-				{/*<button onClick={this.simpleGet}>Submit Score</button>*/}
 					<ScoreForm score={this.props.score} />
 				</div>
 				);
 		}
 		return (
-
-				<div>
-
-				<h2>{this.props.score}</h2>
-				<h3>{this.props.strikes}</h3>
-				<h3>{String(this.props.endGame)}</h3>
+			<div>
 				<GeolocationExampleGoogleMap
 					key={'frenchtoast'}
 					containerElement={
@@ -139,18 +135,18 @@ class YourMap extends Component {
 					}
 					center={this.props.center}
 				/>
-
-
-				{rands}		
-
+				<div>
+					<h2 className='score'>Your Score: {this.props.score}</h2>
+					<h3 className='strikes'>Strikes: {this.props.strikes}</h3>
 				</div>
+				{rands}
+			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
 	count: state.counter.count,
-	//randomLocations:state.randomMap.randomLocations,
 	randomCities: state.yourMap.randomCities,
 	winner: state.yourMap.winner,
 	position: state.yourMap.position,
@@ -162,12 +158,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 	setLocation,
-							getFirstMap,
-								fetchRandomCities,
-							changePage: () => push('/about-us')
+	getFirstMap,
+	fetchRandomCities,
+	changePage: () => push('/about-us')
 }, dispatch)
 
 export default connect(
-			mapStateToProps,
-			mapDispatchToProps
-		)(YourMap)
+	mapStateToProps,
+	mapDispatchToProps
+)(YourMap)
