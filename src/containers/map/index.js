@@ -117,11 +117,8 @@ class YourMap extends Component {
 
 		if(this.props.endGame) {
 			return (
-				<div><h1>GAME OVER</h1>
-					<h2>{this.props.score}</h2>
-					<ScoreForm score={this.props.score} />
-				</div>
-				);
+				<ScoreForm score={this.props.score} />
+			);
 		}
 		return (
 			<div>
@@ -139,7 +136,9 @@ class YourMap extends Component {
 					<h2 className='score'>Your Score: {this.props.score}</h2>
 					<h3 className='strikes'>Strikes: {this.props.strikes}</h3>
 				</div>
-				{rands}
+				<div className='random-maps'>
+					{rands}
+				</div>
 			</div>
 		);
 	}

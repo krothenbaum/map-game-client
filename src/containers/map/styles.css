@@ -3,6 +3,10 @@
 	padding: 10px;
 }
 
+.random-maps {
+	text-align: center;
+}
+
 .score {
 	display: inline-block;
 	width: 150px;

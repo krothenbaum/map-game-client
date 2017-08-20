@@ -7,25 +7,25 @@ import RandomCityMap from '../random'
 import ScoreBoard from '../scoreboard/scoreboard'
 
 const App = () => (
-  <div>
-    <header>
-      <Link to="/">Map</Link>
-      <Link to="/home">Home</Link>
-      <Link to="/about-us">About</Link>
-      <Link to="/RandomCityMap">Random Cities</Link>
-      <Link to="/ScoreBoard">Score Board</Link>
-      
-    </header>
+	<div>
+		<header>
+			<Link to="/">Map</Link>
+			{/*<Link to="/home">Home</Link>
+			<Link to="/about-us">About</Link>
+			<Link to="/RandomCityMap">Random Cities</Link>*/}
+			<Link to="/ScoreBoard">Score Board</Link>
+			
+		</header>
 
-    <main>
-      <Route exact path="/" component={Map} />    
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/about-us" component={About} />
-      <Route exact path="/RandomCityMap" component={RandomCityMap} />
-      <Route exact path="/ScoreBoard" component={ScoreBoard} />
-      
-    </main>
-  </div>
+		<main>
+			<Route exact path="/" component={Map} />    
+			{/*<Route exact path="/home" component={Home} />
+			<Route exact path="/about-us" component={About} />
+			<Route exact path="/RandomCityMap" component={RandomCityMap} />*/}
+			<Route exact path="/ScoreBoard" component={ScoreBoard} />
+			
+		</main>
+	</div>
 )
 
 
