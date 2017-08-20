@@ -30,11 +30,11 @@ class ScoreBoard extends Component {
 		});
 		
 		return(
-			<div>
-				<div>
-					<div className='rankHeader'>RANK</div>
-					<div className='nameHeader'>NAME</div>
-					<div className='scoreHeader'>SCORE</div>
+			<div className='scoreboard-container'>
+				<div className='record'>
+					<div className='rank header'>RANK</div>
+					<div className='name header'>NAME</div>
+					<div className='score header'>SCORE</div>
 				</div>
 				{scores}
 			</div>

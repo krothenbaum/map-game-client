@@ -152,15 +152,15 @@ export const fetchRandomCities = (position) => {
 
 			});
 
-		const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
-			.then((response) => {
-				return response.json()
-			})
-			.then((city) => {
-				cities.push(city)
-			});			
+		// const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+		// 	.then((response) => {
+		// 		return response.json()
+		// 	})
+		// 	.then((city) => {
+		// 		cities.push(city)
+		// 	});			
 
-		return Promise.all([ fetchA, fetchB, fetchC, fetchD ])
+		return Promise.all([ fetchA, fetchB, fetchC])
 			.then( values => {
 				dispatch(calculateWinner(cities, position))				
 		})
