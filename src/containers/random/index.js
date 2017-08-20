@@ -67,7 +67,7 @@ const RandomCity = withGoogleMap(props => {
 class RandomCityMap extends Component {
 
 	isUnmounted = false;
-
+	
 	componentWillUnmount() {
 		this.isUnmounted = true;
 	}
@@ -86,10 +86,10 @@ class RandomCityMap extends Component {
 						<div style={mapElementStyle} />
 					}
 					center={this.props.center}
-					name={this.props.name}
+					name={decodeURIComponent(this.props.name)}
 					onClick={this.props.increment}						
 				/>
-				<button className='btn' onClick={() => { this.props.checkWinner(this.props.winner); this.props.fetchRandomCities(); }}>Is {this.props.name} the closest?</button>
+				<button className='btn' onClick={() => { this.props.checkWinner(this.props.winner); this.props.fetchRandomCities(); }}>Is {decodeURIComponent(this.props.name)} the closest?</button>
 			</div>
 		);
 	}

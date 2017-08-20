@@ -25,7 +25,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-    
   },
-  "homepage": "https://Tzikas.github.io/map-react"
+  "homepage": "https://krothenbaum.github.io/map-game-client/"
 }

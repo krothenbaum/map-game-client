@@ -3,7 +3,7 @@ import {
 		Component,
 } from "react";
 
-import {getHighScores} from './reducers';
+import { getHighScores } from './reducers';
 import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -13,7 +13,6 @@ import './styles.css';
 class ScoreBoard extends Component {
 	// get top scores from api and then render.
 	componentDidMount() {
-		console.log(this);
 		this.props.getHighScores();
 	}
 
