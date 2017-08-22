@@ -1,16 +1,17 @@
 .btn {
+	font-size: 20px;
  border: none;
- background-color: #4D7EA8;
+ background-color: #056EEE;
  height:50px;
  width:250px;
  cursor:pointer;
  color: white;
  border-radius: 2px;
- transition: background-color .3s ease-in-out;
+ transition: background-color .5s ease-in-out;
 }
 
 .btn:hover {
- background-color: #233A4D;
+ background-color: #F50550;
  color: white;
- transition: background-color .3s ease-in-out;
+ transition: background-color .5s ease-in-out;
 }

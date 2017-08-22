@@ -159,7 +159,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	setLocation,
 	getFirstMap,
 	fetchRandomCities,
-	changePage: () => push('/about-us')
+	changePage: () => push('/scoreboard')
 }, dispatch)
 
 export default connect(
