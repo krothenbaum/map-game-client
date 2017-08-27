@@ -4,7 +4,6 @@ import {
 } from "react";
 
 import { getHighScores } from './reducers';
-import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -18,13 +17,13 @@ class ScoreBoard extends Component {
 
 	render() {
 		let scores = [];
-		const colors = ['red'];
+		const colors = ['red','orangered','orange','green','lime','aqua','teal','blue','fuchsia','purple'];
 		// let rank = 1;
 		this.props.highScores.map((record, rank) => {
 			scores.push(<div className='record' key={rank}>
 				<div className={'rank ' + colors[rank]}>{rank+1}</div>
 				<div className={'name ' + colors[rank]}>{record.name}</div>
-				<div className={'score ' + colors[rank]}>{record.score}</div>
+				<div className={'scoreboard-score ' + colors[rank]}>{record.score}</div>
 			</div>);
 		});
 
@@ -33,7 +32,7 @@ class ScoreBoard extends Component {
 				<div className='record'>
 					<div className='rank header'>RANK</div>
 					<div className='name header'>NAME</div>
-					<div className='score header'>SCORE</div>
+					<div className='scoreboard-score header'>SCORE</div>
 				</div>
 				{scores}
 			</div>

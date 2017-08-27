@@ -31,8 +31,6 @@ class ScoreForm extends Component {
 			score: this.state.score
 		};
 
-		console.log(body);
-
 		fetch('https://radiant-hamlet-88082.herokuapp.com/api/score', {
 			method:'POST',
 			headers: {
@@ -44,7 +42,6 @@ class ScoreForm extends Component {
 		.then(response => {
 				this.setState({redirectToScoreboard: true});
 				this.props.resetGame();
-				console.log(response);
 		});
 		event.preventDefault();
 	}
@@ -61,7 +58,7 @@ class ScoreForm extends Component {
 				<p className='final-score'>{this.state.score}</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type='text' name='name' placeholder='ENTER NAME' value={this.state.name} onChange={this.handleChange}/> <br />
-					<input type='submit' value='Submit Score'/>
+					<input type='submit' value='SUBMIT SCORE'/>
 				</form>
 			</div>
 		);

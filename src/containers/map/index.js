@@ -1,4 +1,3 @@
-/* global google */
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -12,11 +11,9 @@ import { resetGame } from '../random/randomMap';
 
 import RandomCityMap from '../random';
 import ScoreForm from '../scoreform/scoreform';
-import GameStatus from '../gamestatus/gamestatus'
-;
-import canUseDOM from "can-use-dom";
+import GameStatus from '../gamestatus/gamestatus';
 
-import raf from "raf";
+
 import 'whatwg-fetch';
 
 import {
@@ -35,33 +32,21 @@ import {
 
 import '../../../src/main.css';
 
-const geolocation = (
-		canUseDOM && navigator.geolocation ?
-		navigator.geolocation :
-		({
-			getCurrentPosition(success, failure) {
-				failure(`Your browser doesn't support geolocation.`);
-			},
-		})
-		);
+// const geolocation = (
+// 		canUseDOM && navigator.geolocation ?
+// 		navigator.geolocation :
+// 		({
+// 			getCurrentPosition(success, failure) {
+// 				failure(`Your browser doesn't support geolocation.`);
+// 			},
+// 		})
+// 		);
 
 const GeolocationExampleGoogleMap = withGoogleMap(props => (
 			<GoogleMap defaultZoom={12} center={props.center} >
 				<Marker position={props.center} title='You are (near) here.' />
 			</GoogleMap>
 			));
-
-
-
-
-
-
-/*
-	* https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
-	*
-	* Add <script src="https://maps.googleapis.com/maps/api/js"></script> to your HTML to provide google.maps reference
-	*/
-
 
 class YourMap extends Component {
 	constructor(props){
@@ -70,40 +55,17 @@ class YourMap extends Component {
 			center: null,
 		};
 		this.state = state;
-
-		this.simpleGet = this.simpleGet.bind(this);
 	}
 
 	isUnmounted = false;
 	componentWillReceiveProps(){
 	}
 	componentDidMount() {
-
 		this.props.getFirstMap();
-		//let winner = Math.floor(Math.random()*4)
-
 	}
 
 	componentWillUnmount() {
 		this.isUnmounted = true;
-	}
-	componentDidUpdate(){
-
-	}
-
-	simpleGet(){
-		console.log('simple get');
-		// url (required), options (optional)
-		fetch('https://radiant-hamlet-88082.herokuapp.com/api/score', {
-				method: 'get'
-		}).then(function(response) {
-			console.log('response')
-			console.log(response);
-
-		}).catch(function(err) {
-			console.log(err);
-				// Error :(
-		});
 	}
 
 	render() {
@@ -113,7 +75,7 @@ class YourMap extends Component {
 		if(cities){ //There's def a better way.
 			let winner = null;
 			cities.forEach((c, i) => {
-				c.city == this.props.winner ? winner = true : winner = false;
+				c.city === this.props.winner ? winner = true : winner = false;
 				const center = {'lat':c.lat, 'lng':c.lon}
 				rands.push(<div className='randomMapStyle' key={i+100}>
 					<RandomCityMap key={i} winner={winner} distance={c.distance} center={center} name={c.city} />				</div>);
@@ -130,7 +92,7 @@ class YourMap extends Component {
 				<GeolocationExampleGoogleMap
 					key={'frenchtoast'}
 					containerElement={
-						<div style={{ height: `200px` }} />
+						<div />
 					}
 					mapElement={
 						<div style={{ height: `200px` }} />
@@ -139,7 +101,7 @@ class YourMap extends Component {
 				/>
 				<GameStatus score={this.props.score} strikes={this.props.strikes} />
 
-				<div className='align-center' style={{border: `1px solid green`}}>
+				<div className='align-center'>
 					{rands}
 				</div>
 			</div>

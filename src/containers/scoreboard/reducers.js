@@ -1,7 +1,7 @@
-import {
-	default as React,
-		Component,
-} from "react";
+// import {
+// 	default as React,
+// 		Component,
+// } from "react";
 
 const initialState = {
 	highScores: []
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
 
 export const getHighScores = () => {
 	return dispatch => {
-		const highScores = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/score/top' )	
+		fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/score/top' )	
 		.then((response) => {
 			return response.json();
 		})

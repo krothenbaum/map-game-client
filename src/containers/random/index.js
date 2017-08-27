@@ -1,6 +1,3 @@
-/* global google */
-
-//import React from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -12,11 +9,6 @@ import '../../../src/main.css';
 
 import { increment } from '../../modules/counter'
 import { fetchRandomCities } from '../map/reducers'
-
-/***/
-import canUseDOM from "can-use-dom";
-
-import raf from "raf";
 
 import {
 	default as React,
@@ -33,10 +25,7 @@ import 'whatwg-fetch';
 
 const containerStyle = {
 	display: 'block',
-	height: '250px',
-	width: '250px',
-	padding: '0',
-	border: '1px solid blue'
+	padding: '10px 0',
 }
 
 const mapElementStyle = {
@@ -44,15 +33,15 @@ const mapElementStyle = {
 	width: `250px`
 }
 
-const geolocation = (
-		canUseDOM && navigator.geolocation ?
-		navigator.geolocation :
-		({
-			getCurrentPosition(success, failure) {
-				failure(`Your browser doesn't support geolocation.`);
-			},
-		})
-		);
+// const geolocation = (
+// 		canUseDOM && navigator.geolocation ?
+// 		navigator.geolocation :
+// 		({
+// 			getCurrentPosition(success, failure) {
+// 				failure(`Your browser doesn't support geolocation.`);
+// 			},
+// 		})
+// 		);
 
 const RandomCity = withGoogleMap(props => {
 

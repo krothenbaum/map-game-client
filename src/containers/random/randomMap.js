@@ -13,14 +13,13 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 
 		case 'SCORE':
-			console.log(state);
 			return {
 				...state,
  	  		 	score: state.score + action.payload,
  	  		 	strikes: state.strikes + action.strike,
  	  		 	endGame: action.endGame
 			}
-	
+
 			case 'RESET_GAME':
 			//call function
 				return {
@@ -45,11 +44,10 @@ export const resetGame = () => {
 
 
 export const checkWinner = (winner) => {
-	let s;
-	let strike=0;
-	let gameOver = false; 
-	winner ? s=100 : (s=-25, strike++);
-	console.log(store.getState().randomMap.strikes + strike);
+	let score;
+	let strike = 0;
+	let gameOver = false;
+	winner ? score = 100 : (score = 0, 	strike++);
 	if(store.getState().randomMap.strikes + strike >= 3) {
 		gameOver = true;
 	}
@@ -57,7 +55,7 @@ export const checkWinner = (winner) => {
 	return dispatch => {
 		dispatch({
 			type: 'SCORE',
-			payload: s,
+			payload: score,
 			strike: strike,
 			endGame: gameOver
 		})

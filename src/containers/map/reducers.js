@@ -1,18 +1,12 @@
 import canUseDOM from "can-use-dom";
-import {
-	withGoogleMap,
-		GoogleMap,
-		Marker,
-} from "react-google-maps";
 
-import thunk from 'redux-thunk'
 import store from '../../store'
 
-export const LOCATION = 'adfdsf/LOCATasdION/usethisforoutsidedispatchcalls' 
+export const LOCATION = 'adfdsf/LOCATasdION/usethisforoutsidedispatchcalls'
 
 
 const initialState = {
-	theLocation: false, 
+	theLocation: false,
 	maps: [],
 	position:{ coords:{ latitude:60, longitude:105} },
 	center: { lat:0, lng:0 },
@@ -58,7 +52,7 @@ export const setCenter = (position) => {
 
 	return{
 		type:'SETCENTER',
-		payload:center	
+		payload:center
 	}
 }
 
@@ -66,7 +60,7 @@ export const setCenter = (position) => {
 
 const geolocation = (
 		canUseDOM && navigator.geolocation ?
-		navigator.geolocation : 
+		navigator.geolocation :
 		({
 			getCurrentPosition(success, failure) {
 				failure("Your browser doesn't support geolocation.");
@@ -77,26 +71,26 @@ const geolocation = (
 
 
 const calculateWinner = (cities, position) =>{
-	//let yourLat = position.coords.latitude;	
+	//let yourLat = position.coords.latitude;
 	//let yourLng = position.coords.longitude;
-	const yourLat = store.getState().yourMap.center.lat;   //probably a better way 
+	const yourLat = store.getState().yourMap.center.lat;   //probably a better way
 	const yourLng = store.getState().yourMap.center.lng;
-	
-	let distance = 99999999; 
-	let winner = ''; 
-	
+
+	let distance = 99999999;
+	let winner = '';
+
 	cities.forEach( (c) => {
 		////console.log(c.city)
 		////console.log(getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon))
-		const d = getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon); 
-		c['distance'] = d; 
+		const d = getDistanceFromLatLonInKm(yourLat, yourLng, c.lat, c.lon);
+		c['distance'] = d;
 		if(d < distance){
 			distance = d;
-		  winner = c.city	
+		  winner = c.city
 		}
 	})
-	
-	return { 
+
+	return {
 		type: 'SET_RANDOM_CITIES',
 		payload: cities,
 		winner: winner
@@ -106,13 +100,13 @@ const calculateWinner = (cities, position) =>{
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
   var R = 6371; // Radius of the earth in km
   var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1); 
-  var a = 
+  var dLon = deg2rad(lon2-lon1);
+  var a =
     Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
     Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    ;
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c; // Distance in km
   return d;
 }
@@ -125,15 +119,15 @@ function deg2rad(deg) {
 export const fetchRandomCities = (position) => {
 	return dispatch => {
 	let cities = [];
-		const fetchA = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+		const fetchA = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
 			.then((response) => {
 				return response.json()
 			})
 			.then((city) => {
 				cities.push(city)
-			});	  
+			});
 
-		const fetchB = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+		const fetchB = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
 			.then((response) => {
 				return response.json()
 			})
@@ -143,7 +137,7 @@ export const fetchRandomCities = (position) => {
 
 			});
 
-		const fetchC = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+		const fetchC = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
 			.then((response) => {
 				return response.json()
 			})
@@ -152,17 +146,17 @@ export const fetchRandomCities = (position) => {
 
 			});
 
-		// const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )	
+		// const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
 		// 	.then((response) => {
 		// 		return response.json()
 		// 	})
 		// 	.then((city) => {
 		// 		cities.push(city)
-		// 	});			
+		// 	});
 
 		return Promise.all([ fetchA, fetchB, fetchC])
 			.then( values => {
-				dispatch(calculateWinner(cities, position))				
+				dispatch(calculateWinner(cities, position))
 		})
 	}
 }
@@ -170,7 +164,7 @@ export const fetchRandomCities = (position) => {
 
 export const getFirstMap = () => {
 	return dispatch => {
-		const gMap = geolocation.getCurrentPosition((position) => {
+		geolocation.getCurrentPosition((position) => {
 			if (this.isUnmounted) {
 				return;
 			}
