@@ -5,13 +5,14 @@ import {
 
 import { Redirect } from 'react-router'
 
-import './styles.css';
+import '../../../src/main.css';
 
 class ScoreForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			name: '',
+			score: this.props.score,
 			redirectToScoreboard: false
 		};
 
@@ -27,17 +28,23 @@ class ScoreForm extends Component {
 
 		let body = {
 			name: this.state.name,
-			score: this.props.score
+			score: this.state.score
 		};
 
 		console.log(body);
-		
+
 		fetch('https://radiant-hamlet-88082.herokuapp.com/api/score', {
 			method:'POST',
+			headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
 			body: JSON.stringify(body)
 		})
 		.then(response => {
 				this.setState({redirectToScoreboard: true});
+				this.props.resetGame();
+				console.log(response);
 		});
 		event.preventDefault();
 	}
@@ -49,9 +56,9 @@ class ScoreForm extends Component {
 			)
 		}
 		return(
-			<div className='scoreform-container'>
+			<div className='align-center'>
 				<h1 className='game-over'>GAME OVER</h1>
-				<p className='final-score'>{this.props.score}</p>
+				<p className='final-score'>{this.state.score}</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type='text' name='name' placeholder='ENTER NAME' value={this.state.name} onChange={this.handleChange}/> <br />
 					<input type='submit' value='Submit Score'/>
@@ -60,7 +67,5 @@ class ScoreForm extends Component {
 		);
 	}
 }
-
-// action='https://radiant-hamlet-88082.herokuapp.com/api/score' method='POST' 
 
 export default ScoreForm

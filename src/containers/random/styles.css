@@ -8,6 +8,8 @@
  color: white;
  border-radius: 2px;
  transition: background-color .5s ease-in-out;
+ padding-left: 1px;
+ padding-right: 1px;
 }
 
 .btn:hover {

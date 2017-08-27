@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=VT323');
+
 
 .rank, .name, .score, .rankHeader, .nameHeader, .scoreHeader {
 	font-family: 'VT323', monospace;
@@ -36,6 +36,10 @@
 .header {
 	color: #00ff00;
 	font-size: 24px;
+}
+
+.red {
+	color: red;
 }
 
 /*.rankHeader {

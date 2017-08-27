@@ -8,7 +8,12 @@ import {
 	fetchRandomCities
 } from './reducers'
 
-import RandomCityMap from '../random'
+import { resetGame } from '../random/randomMap';
+
+import RandomCityMap from '../random';
+import ScoreForm from '../scoreform/scoreform';
+import GameStatus from '../gamestatus/gamestatus'
+;
 import canUseDOM from "can-use-dom";
 
 import raf from "raf";
@@ -26,12 +31,13 @@ import {
 	Marker,
 } from "react-google-maps";
 
-import ScoreForm from '../scoreform/scoreform'
-import './styles.css'
+
+
+import '../../../src/main.css';
 
 const geolocation = (
 		canUseDOM && navigator.geolocation ?
-		navigator.geolocation : 
+		navigator.geolocation :
 		({
 			getCurrentPosition(success, failure) {
 				failure(`Your browser doesn't support geolocation.`);
@@ -93,7 +99,7 @@ class YourMap extends Component {
 		}).then(function(response) {
 			console.log('response')
 			console.log(response);
-						
+
 		}).catch(function(err) {
 			console.log(err);
 				// Error :(
@@ -103,21 +109,20 @@ class YourMap extends Component {
 	render() {
 		let rands = [];
 		const cities = this.props.randomCities[0];
-		
-		if(cities){ //There's def a better way.  
-			let winner = null; 
+
+		if(cities){ //There's def a better way.
+			let winner = null;
 			cities.forEach((c, i) => {
-				c.city == this.props.winner ? winner = true : winner = false;  
-				const center = {'lat':c.lat, 'lng':c.lon} 
-				rands.push(<div className='randomMapStyle'>
-					<RandomCityMap  key={i} winner={winner} distance={c.distance} center={center} name={c.city} />
-				</div>);			
+				c.city == this.props.winner ? winner = true : winner = false;
+				const center = {'lat':c.lat, 'lng':c.lon}
+				rands.push(<div className='randomMapStyle' key={i+100}>
+					<RandomCityMap key={i} winner={winner} distance={c.distance} center={center} name={c.city} />				</div>);
 			})
 		}
 
 		if(this.props.endGame) {
 			return (
-				<ScoreForm score={this.props.score} />
+				<ScoreForm score={this.props.score} resetGame={this.props.resetGame} />
 			);
 		}
 		return (
@@ -132,11 +137,9 @@ class YourMap extends Component {
 					}
 					center={this.props.center}
 				/>
-				<div>
-					<h2 className='score'>Your Score: {this.props.score}</h2>
-					<h3 className='strikes'>Strikes: {this.props.strikes}</h3>
-				</div>
-				<div className='random-maps'>
+				<GameStatus score={this.props.score} strikes={this.props.strikes} />
+
+				<div className='align-center' style={{border: `1px solid green`}}>
 					{rands}
 				</div>
 			</div>
@@ -159,6 +162,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	setLocation,
 	getFirstMap,
 	fetchRandomCities,
+	resetGame,
 	changePage: () => push('/scoreboard')
 }, dispatch)
 

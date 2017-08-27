@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+* {
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+}
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, dl, dt, dd, ol, ul, li, hr,
+fieldset, form, label, legend, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section,
+summary, hgroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.score {
+	display: inline-block;
+
+	/*height: 50px;*/
+	font-size: 36px;
+}
+
+.status-container {
+  width: 150px;
+  /*height: 50px;*/
+  display: inline-block;
+}
+.status-header {
+  font-size: 24px;
+}
+
+.strikes {
+	display: inline-block;
+	/*width: 150px;
+	height: 50px;*/
+	font-size: 36px;
+}
+
+.randomMapStyle {
+	display: inline-block;
+	padding: 10px;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.btn {
+ margin-top: 20px;
+ font-size: 20px;
+ border: none;
+ background-color: #056EEE;
+ height:50px;
+ width:250px;
+ cursor:pointer;
+ color: white;
+ border-radius: 2px;
+ transition: background-color .5s ease-in-out;
+ /*padding-left: 1px;
+ padding-right: 1px;*/
+}
+
+.btn:hover {
+ background-color: #F50550;
+ color: white;
+ transition: background-color .5s ease-in-out;
+}
+
+.game-over {
+	font-size: 144px;
+	margin: 0px;
+}
+
+.final-score {
+	margin: 0px;
+	font-size: 72px
+}
+
+input[type=text] {
+	text-align: center;
+	font-size: 44px;
+	box-sizing: border-box;
+	width: 250px;
+	height: 50px;
+}
+
+input[type=submit] {
+	margin-top: 10px;
+	font-size: 24px;
+ border: none;
+ background-color: #4D7EA8;
+ height:50px;
+ width:250px;
+ cursor: pointer;
+ color: white;
+ border-radius: 2px;
+ transition: background-color .3s ease-in-out;
+}
+
+input[type=submit]:hover {
+ background-color: #233A4D;
+ color: white;
+ transition: background-color .3s ease-in-out;
+}
+
+.rank {
+	width: 50px;
+	padding-right: 10px;
+	display: inline-block;
+}
+
+.name {
+	font-size: 24px;
+	width: 25%;
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+/*.scoreboard-score {
+	font-size: 24px;
+	display: inline-block;
+	padding-right: 10px;
+	padding-left: 10px;
+}*/
+
+.header {
+	color: #00ff00;
+	font-size: 24px;
+}
+
+.red {
+	color: red;
+}

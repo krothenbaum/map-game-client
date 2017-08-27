@@ -13,22 +13,33 @@ export default (state = initialState, action) => {
 	switch (action.type) {
 
 		case 'SCORE':
-			console.log(action);
+			console.log(state);
 			return {
 				...state,
  	  		 	score: state.score + action.payload,
  	  		 	strikes: state.strikes + action.strike,
  	  		 	endGame: action.endGame
 			}
-			
-			case 'END_GAME':
+	
+			case 'RESET_GAME':
 			//call function
 				return {
 					...state,
+					score: 0,
+					strikes: 0,
+					endGame: false
 				}
 
 		default:
 			return state
+	}
+}
+
+export const resetGame = () => {
+	return dispatch => {
+		dispatch({
+			type: 'RESET_GAME'
+		})
 	}
 }
 
@@ -46,11 +57,9 @@ export const checkWinner = (winner) => {
 	return dispatch => {
 		dispatch({
 			type: 'SCORE',
-			payload:s,
+			payload: s,
 			strike: strike,
 			endGame: gameOver
 		})
 	}
 }
-
-

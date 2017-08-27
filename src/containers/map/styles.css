@@ -3,20 +3,7 @@
 	padding: 10px;
 }
 
-.random-maps {
+.align-center {
 	text-align: center;
 }
 
-.score {
-	display: inline-block;
-	width: 150px;
-	height: 50px;
-	font-size: 20px;
-}
-
-.strikes {
-	display: inline-block;
-	width: 150px;
-	height: 50px;
-	font-size: 20px;
-}

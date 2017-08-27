@@ -8,7 +8,7 @@ import {
 	checkWinner,
 } from './randomMap'
 
-import './styles.css'
+import '../../../src/main.css';
 
 import { increment } from '../../modules/counter'
 import { fetchRandomCities } from '../map/reducers'
@@ -32,20 +32,21 @@ import {
 import 'whatwg-fetch';
 
 const containerStyle = {
-	display: 'block', 
+	display: 'block',
 	height: '250px',
 	width: '250px',
-	padding: '10px 0'
+	padding: '0',
+	border: '1px solid blue'
 }
 
-const mapElementStyle = { 
+const mapElementStyle = {
 	height: `250px`,
 	width: `250px`
 }
 
 const geolocation = (
 		canUseDOM && navigator.geolocation ?
-		navigator.geolocation : 
+		navigator.geolocation :
 		({
 			getCurrentPosition(success, failure) {
 				failure(`Your browser doesn't support geolocation.`);
@@ -67,7 +68,7 @@ const RandomCity = withGoogleMap(props => {
 class RandomCityMap extends Component {
 
 	isUnmounted = false;
-	
+
 	componentWillUnmount() {
 		this.isUnmounted = true;
 	}
@@ -75,7 +76,7 @@ class RandomCityMap extends Component {
 	render() {
 		return (
 			<div>
-				{/*<h5 style={{margin:`10px 0 0 0`}} onClick={this.props.increment} > 
+				{/*<h5 style={{margin:`10px 0 0 0`}} onClick={this.props.increment} >
 				{this.props.count} {this.props.name} {String(this.props.winner)} {this.props.distance}
 				</h5>*/}
 				<RandomCity
@@ -87,7 +88,7 @@ class RandomCityMap extends Component {
 					}
 					center={this.props.center}
 					name={decodeURIComponent(this.props.name)}
-					onClick={this.props.increment}						
+					onClick={this.props.increment}
 				/>
 				<button className='btn' onClick={() => { this.props.checkWinner(this.props.winner); this.props.fetchRandomCities(); }}>Is {decodeURIComponent(this.props.name)} the closest?</button>
 			</div>
@@ -107,7 +108,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => bindActionCreators({
 	increment,
 	checkWinner,
-	fetchRandomCities,      
+	fetchRandomCities,
 	changePage: () => push('/about-us')
 }, dispatch)
 
@@ -115,5 +116,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(RandomCityMap)
-
-

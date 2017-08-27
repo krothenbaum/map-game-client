@@ -8,7 +8,7 @@ import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import './styles.css';
+import '../../../src/main.css';
 
 class ScoreBoard extends Component {
 	// get top scores from api and then render.
@@ -18,18 +18,18 @@ class ScoreBoard extends Component {
 
 	render() {
 		let scores = [];
-		let rank = 1;
-		this.props.highScores.map(record => {
-			scores.push(<div className='record'>
-				<div className='rank'>{rank}</div>
-				<div className='name'>{record.name}</div>
-				<div className='score'>{record.score}</div>
+		const colors = ['red'];
+		// let rank = 1;
+		this.props.highScores.map((record, rank) => {
+			scores.push(<div className='record' key={rank}>
+				<div className={'rank ' + colors[rank]}>{rank+1}</div>
+				<div className={'name ' + colors[rank]}>{record.name}</div>
+				<div className={'score ' + colors[rank]}>{record.score}</div>
 			</div>);
-			rank++;
 		});
-		
+
 		return(
-			<div className='scoreboard-container'>
+			<div className='align-center'>
 				<div className='record'>
 					<div className='rank header'>RANK</div>
 					<div className='name header'>NAME</div>
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-	getHighScores 
+	getHighScores
 }, dispatch)
 
 export default connect(
