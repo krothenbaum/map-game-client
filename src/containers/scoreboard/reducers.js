@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
 
 export const getHighScores = () => {
 	return dispatch => {
-		fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/score/top' )	
+		fetch( 'https://agile-inlet-43584.herokuapp.com/api/score/top' )	
 		.then((response) => {
 			return response.json();
 		})

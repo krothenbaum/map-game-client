@@ -109,20 +109,12 @@ function deg2rad(deg) {
 const fetchCity = async (url) => {
 	const response = await fetch(url);
 	return response.json();
-	// try {
-	// 	const data = await fetch(url);
-	// 	const city = await data.json();
-	// 	cities.push(city);
-	// }
-	// catch (err) {
-	// 	console.log('fetch city failed', err);
-	// }
 }
 
 
 export const fetchRandomCities = (position) => {
 	return async dispatch  => {
-		const url = 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity';
+		const url = 'https://agile-inlet-43584.herokuapp.com/api/randomcities';
 		let cities = [];
 		let city;
 
@@ -135,51 +127,6 @@ export const fetchRandomCities = (position) => {
 		} catch (err) {
 			console.log('fetch city failed', err);
 		}
-
-
-		// return dispatch(calculateWinner(cities, position));
-
-
-
-	// 	const fetchA = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
-	// 		.then((response) => {
-	// 			return response.json()
-	// 		})
-	// 		.then((city) => {
-	// 			cities.push(city)
-	// 		});
-	//
-	// 	const fetchB = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
-	// 		.then((response) => {
-	// 			return response.json()
-	// 		})
-	// 		.then((city) => {
-	//
-	// 			cities.push(city)
-	//
-	// 		});
-	//
-	// 	const fetchC = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
-	// 		.then((response) => {
-	// 			return response.json()
-	// 		})
-	// 		.then((city) => {
-	// 			cities.push(city)
-	//
-	// 		});
-
-		// const fetchD = fetch( 'https://radiant-hamlet-88082.herokuapp.com/api/randomcity' )
-		// 	.then((response) => {
-		// 		return response.json()
-		// 	})
-		// 	.then((city) => {
-		// 		cities.push(city)
-		// 	});
-
-		// return Promise.all([ fetchA, fetchB, fetchC])
-		// 	.then( values => {
-		// 		dispatch(calculateWinner(cities, position))
-		// })
 	}
 }
 

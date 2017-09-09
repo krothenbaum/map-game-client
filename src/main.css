@@ -132,42 +132,42 @@ input[type=submit]:hover {
 	/*font-size: 24px;*/
 }
 
-.red {
-	color: red;
+.first {
+	color: #8C0000;
 }
 
-.orangered {
-  color: orangered;
+.second {
+  color: #A30000;
 }
 
-.orange {
-  color: orange;
+.third {
+  color: #BA0000;
 }
 
-.green {
-  color: green;
+.fourth {
+  color: #D10000;
 }
 
-.lime {
-  color: lime;
+.fifth {
+  color: #E80000;
 }
 
-.teal {
-  color: teal;
+.sixth {
+  color: #FF0000;
 }
 
-.aqua {
-  color: aqua;
+.seventh {
+  color: #FF1717;
 }
 
-.blue {
-  color: blue;
+.eight {
+  color: #FF2E2E;
 }
 
-.fuchsia {
-  color: fuchsia;
+.ninth {
+  color: #FF4545;
 }
 
-.purple {
-  color: purple;
+.tenth {
+  color: #FF5C5C;
 }

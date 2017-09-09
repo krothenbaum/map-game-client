@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import '../../../src/main.css';
 
-class ScoreBoard extends Component {
+export class ScoreBoard extends Component {
 	// get top scores from api and then render.
 	componentDidMount() {
 		this.props.getHighScores();
@@ -17,7 +17,7 @@ class ScoreBoard extends Component {
 
 	render() {
 		let scores = [];
-		const colors = ['red','orangered','orange','green','lime','aqua','teal','blue','fuchsia','purple'];
+		const colors = ['first','second','third','fourth','fifth','sixth','seventh','eight','ninth','tenth'];
 		// let rank = 1;
 		this.props.highScores.map((record, rank) => {
 			scores.push(<div className='record' key={rank}>

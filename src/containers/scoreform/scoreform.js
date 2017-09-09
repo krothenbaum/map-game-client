@@ -31,7 +31,7 @@ class ScoreForm extends Component {
 			score: this.state.score
 		};
 
-		fetch('https://radiant-hamlet-88082.herokuapp.com/api/score', {
+		fetch('https://agile-inlet-43584.herokuapp.com/api/score', {
 			method:'POST',
 			headers: {
     'Accept': 'application/json',
