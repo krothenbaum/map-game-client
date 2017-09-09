@@ -25,6 +25,7 @@ class ScoreForm extends Component {
 	}
 
 	handleSubmit(event) {
+		event.preventDefault();
 
 		let body = {
 			name: this.state.name,
@@ -43,7 +44,6 @@ class ScoreForm extends Component {
 				this.setState({redirectToScoreboard: true});
 				this.props.resetGame();
 		});
-		event.preventDefault();
 	}
 
 	render() {
@@ -58,7 +58,7 @@ class ScoreForm extends Component {
 				<p className='final-score'>{this.state.score}</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type='text' name='name' placeholder='ENTER NAME' value={this.state.name} onChange={this.handleChange}/> <br />
-					<input type='submit' value='SUBMIT SCORE'/>
+					<button type='submit' value='SUBMIT SCORE'/>
 				</form>
 			</div>
 		);

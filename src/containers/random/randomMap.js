@@ -21,7 +21,6 @@ export default (state = initialState, action) => {
 			}
 
 			case 'RESET_GAME':
-			//call function
 				return {
 					...state,
 					score: 0,
