@@ -34,5 +34,4 @@ describe('<ScoreBoard />', () => {
   it('--- div with scoreboard-score first content equals 100 ---', () => {
     expect(wrapper.find('.scoreboard-score.first').get(0).props.children).toBe(scores[0].score);
   });
-
 })
