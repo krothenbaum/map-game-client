@@ -22,10 +22,13 @@ describe('<ScoreForm />', () => {
   it('--- Contains p with final score ---', () => {
     expect(wrapper.contains(<p className='final-score'>{testScore}</p>)).toBe(true);
   });
+  
 
   it('---- p with final score value ---', () => {
     expect(wrapper.find('p').get(0).props.children).toBe(testScore);
   });
+
+
 
   // it('--- handleSubmit ---', () => {
   //   wrapper.find('form').simulate('submit', { target: {name: "DVader"} });

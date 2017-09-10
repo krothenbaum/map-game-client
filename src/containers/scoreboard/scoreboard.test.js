@@ -4,9 +4,6 @@ import { shallow } from 'enzyme';
 import { ScoreBoard } from './scoreboard';
 import { getHighScores } from './reducers';
 
-import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
 describe('<ScoreBoard />', () => {
   let wrapper;

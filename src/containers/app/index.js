@@ -2,15 +2,16 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import Map from '../map'
 import ScoreBoard from '../scoreboard/scoreboard'
+import '../../../src/main.css';
 
 const App = () => (
 	<div>
 		<header>
-			<Link to="/map-game-client">Map</Link>
+			<Link to="/map-game-client" className='header-link'>Start Game</Link>
 			{/*<Link to="/home">Home</Link>
 			<Link to="/about-us">About</Link>
 			<Link to="/RandomCityMap">Random Cities</Link>*/}
-			<Link to="/map-game-client/scoreboard">Score Board</Link>
+			<Link to="/map-game-client/scoreboard" className='header-link'>Score Board</Link>
 
 		</header>
 

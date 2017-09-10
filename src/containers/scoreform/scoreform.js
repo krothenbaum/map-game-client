@@ -58,7 +58,7 @@ class ScoreForm extends Component {
 				<p className='final-score'>{this.state.score}</p>
 				<form onSubmit={this.handleSubmit}>
 					<input type='text' name='name' placeholder='ENTER NAME' value={this.state.name} onChange={this.handleChange}/> <br />
-					<button type='submit' value='SUBMIT SCORE'/>
+					<button type='submit'>SUBMIT SCORE</button>
 				</form>
 			</div>
 		);
