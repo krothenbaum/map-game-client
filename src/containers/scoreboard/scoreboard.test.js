@@ -26,6 +26,7 @@ describe('<ScoreBoard />', () => {
   it('--- div with name first content equals Test ---', () => {
     expect(wrapper.find('.name.first').get(0).props.children).toBe(scores[0].name);
   });
+  
 
   it('--- Contains div with class scoreboard-score first ---', () => {
     expect(wrapper.contains(<div className='scoreboard-score first'>{scores[0].score}</div>)).toBe(true);

@@ -25,6 +25,7 @@ describe('<ScoreForm />', () => {
 
   it('---- p with final score value ---', () => {
     expect(wrapper.find('p').get(0).props.children).toBe(testScore);
+    
   });
 
   // it('--- handleSubmit ---', () => {
