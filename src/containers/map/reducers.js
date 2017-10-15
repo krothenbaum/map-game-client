@@ -25,6 +25,17 @@ export default (state = initialState, action) => {
 				randomCities: [action.payload],
 				winner: action.winner
 			}
+		case 'LOADING_GAME':
+			console.log('GAME LOADING...');
+			return{
+				...state,
+				loading: false
+			}
+		case 'CHANGE_GAME_STATE':
+			return {
+				...state,
+				gameStart: false
+			}
 
 		default:
 			return state
@@ -60,6 +71,14 @@ const geolocation = (
 			},
 		})
 	);
+
+	const loadingGame = () => {
+		console.log('LOADING...')
+
+		return {
+			type: 'LOADING_GAME'
+		}
+	};
 
 const calculateWinner = (cities, position) =>{
 	//let yourLat = position.coords.latitude;
@@ -124,12 +143,20 @@ export const fetchRandomCities = (position) => {
 				cities.push(city);
 			}
 			dispatch(calculateWinner(cities, position));
+			dispatch(loadingGame());
 		} catch (err) {
 			console.log('fetch city failed', err);
 		}
 	}
 }
 
+export const changeGameState = () => {
+	return dispatch => {
+		dispatch({
+			type: 'CHANGE_GAME_STATE'
+		})
+	}
+}
 
 export const getFirstMap = () => {
 	return dispatch => {

@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import {
 	setLocation,
 	getFirstMap,
-	fetchRandomCities
+	fetchRandomCities,
+	changeGameState
 } from './reducers'
 
 import { resetGame } from '../random/randomMap';
@@ -58,9 +59,9 @@ class YourMap extends Component {
 	}
 
 	isUnmounted = false;
-	componentWillReceiveProps(){
-	}
+
 	componentDidMount() {
+		console.log('FIRST');
 		this.props.getFirstMap();
 	}
 
@@ -71,8 +72,9 @@ class YourMap extends Component {
 	render() {
 		let rands = [];
 		const cities = this.props.randomCities[0];
+		console.log(this.props);
 
-		if(cities){ //There's def a better way.
+		if(cities){
 			let winner = null;
 			cities.forEach((c, i) => {
 				c.city === this.props.winner ? winner = true : winner = false;
@@ -82,10 +84,24 @@ class YourMap extends Component {
 			})
 		}
 
+		// Render high score form is game has ended
 		if(this.props.endGame) {
 			return (
 				<ScoreForm score={this.props.score} resetGame={this.props.resetGame} />
 			);
+		}
+
+		//If game is loading render instructions and wait until first fetch is complete to allow game to start
+		if(this.props.gameStart) {
+			return (
+
+				<div className='align-center instructions'>
+					<h1>What city is closest?</h1>
+					<p>Please accept the geolocation alert. On the next screen you will be presented with 3 random cities. Guess which city is closest to your current location.</p>
+					{this.props.loading ? <h2>LOADING...</h2> : <button onClick={this.props.changeGameState} className='btn'>Start Game</button>}
+
+				</div>
+			)
 		}
 		return (
 			<div>
@@ -117,7 +133,9 @@ const mapStateToProps = state => ({
 	center: state.yourMap.center,
 	score: state.randomMap.score,
 	strikes: state.randomMap.strikes,
-	endGame: state.randomMap.endGame
+	endGame: state.randomMap.endGame,
+	gameStart: state.yourMap.gameStart,
+	loading: state.yourMap.loading
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -125,8 +143,14 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 	getFirstMap,
 	fetchRandomCities,
 	resetGame,
+	changeGameState,
 	changePage: () => push('/scoreboard')
 }, dispatch)
+
+YourMap.defaultProps = {
+	gameStart: true,
+	loading: true
+}
 
 export default connect(
 	mapStateToProps,

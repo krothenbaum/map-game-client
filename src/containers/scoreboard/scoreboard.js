@@ -17,18 +17,28 @@ export class ScoreBoard extends Component {
 
 	render() {
 		let scores = [];
-		const colors = ['first','second','third','fourth','fifth','sixth','seventh','eight','ninth','tenth'];
+		const colors = ['first','second','third','fourth','fifth','sixth','seventh','eight','ninth','tenth', 'your-score'];
 		// let rank = 1;
 		this.props.highScores.map((record, rank) => {
-			scores.push(<div className='record' key={rank}>
-				<div className={'rank ' + colors[rank]}>{rank+1}</div>
-				<div className={'name ' + colors[rank]}>{record.name}</div>
-				<div className={'scoreboard-score ' + colors[rank]}>{record.score}</div>
-			</div>);
+			if (rank == 10) {
+				scores.push(
+					<div className='record last-score' key={rank}>
+						<div className={'rank ' + colors[rank]}>Your Score</div>
+						<div className={'name ' + colors[rank]}>{record.name}</div>
+						<div className={'scoreboard-score ' + colors[rank]}>{record.score}</div>
+					</div>);
+			} else {
+				scores.push(
+					<div className='record' key={rank}>
+						<div className={'rank ' + colors[rank]}>{rank+1}</div>
+						<div className={'name ' + colors[rank]}>{record.name}</div>
+						<div className={'scoreboard-score ' + colors[rank]}>{record.score}</div>
+					</div>);
+			}
 		});
 
 		return(
-			<div className='align-center'>
+			<div className='align-center scoreboard'>
 				<div className='record'>
 					<div className='rank header'>RANK</div>
 					<div className='name header'>NAME</div>

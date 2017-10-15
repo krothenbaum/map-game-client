@@ -65,9 +65,6 @@ class RandomCityMap extends Component {
 	render() {
 		return (
 			<div>
-				{/*<h5 style={{margin:`10px 0 0 0`}} onClick={this.props.increment} >
-				{this.props.count} {this.props.name} {String(this.props.winner)} {this.props.distance}
-				</h5>*/}
 				<RandomCity
 					containerElement={
 						<div style={containerStyle} />

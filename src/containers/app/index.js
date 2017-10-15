@@ -7,7 +7,7 @@ import '../../../src/main.css';
 const App = () => (
 	<div>
 		<header>
-			<Link to="/map-game-client" className='header-link'>Start Game</Link>
+			<Link to="/map-game-client" className='header-link'>Restart Game</Link>
 			{/*<Link to="/home">Home</Link>
 			<Link to="/about-us">About</Link>
 			<Link to="/RandomCityMap">Random Cities</Link>*/}

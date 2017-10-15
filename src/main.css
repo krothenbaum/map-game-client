@@ -88,7 +88,7 @@ input[type=text] {
 
 button[type=submit] {
 	margin-top: 10px;
-	font-size: 24px;
+  font-size: 24px;
  border: none;
  background-color: #4D7EA8;
  height:50px;
@@ -106,7 +106,7 @@ input[type=submit]:hover {
 }
 
 .rank {
-	width: 50px;
+	width: 120px;
 	padding-right: 10px;
 	display: inline-block;
 }
@@ -119,6 +119,10 @@ input[type=submit]:hover {
 	padding-left: 10px;
 }
 
+.scoreboard {
+  margin-top: 80px;
+}
+
 .scoreboard-score {
   width: 15%;
 	font-size: 24px;
@@ -127,49 +131,60 @@ input[type=submit]:hover {
 	padding-left: 10px;
 }
 
+.last-score {
+  font-size: 1.5em;
+  margin-top: 24px;
+}
+
 .header {
-	color: #00ff00;
+	color: #056EEE;
+  font-size: 1.5em;
 	/*font-size: 24px;*/
 }
 
 .first {
-	color: #8C0000;
+	color: #DF0546;
 }
 
 .second {
-  color: #A30000;
+  color: #F50550;
 }
 
 .third {
-  color: #BA0000;
+  color: #F51B5F;
 }
 
 .fourth {
-  color: #D10000;
+  color: #F6326F;
 }
 
 .fifth {
-  color: #E80000;
+  color: #F7497F;
 }
 
 .sixth {
-  color: #FF0000;
+  color: #F85F8F;
 }
 
 .seventh {
-  color: #FF1717;
+  color: #F9769F;
 }
 
 .eight {
-  color: #FF2E2E;
+  color: #FA8DAF;
 }
 
 .ninth {
-  color: #FF4545;
+  color: #FBA4BF;
 }
 
 .tenth {
-  color: #FF5C5C;
+  color: #FCBACF;
+}
+
+.your-score {
+
+  color: #4D7EA8;
 }
 
 header {
@@ -182,4 +197,39 @@ header {
   font-size: 20px;
   align: right;
   padding: 10px;
+}
+
+.instructions {
+  margin-top: 80px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instructions h1 {
+  color: #4D7EA8;
+  margin-bottom: 48px;
+}
+
+.instructions p {
+  margin-bottom: 48px;
+}
+
+/*.instructions h2 {
+  font-size: 2em;
+}*/
+
+
+@media (min-width: 768px) {
+  .instructions h1 {
+    font-size: 4em;
+  }
+
+  .instructions p {
+    font-size: 2.5em;
+  }
+
+  .instructions h2 {
+    font-size: 2em;
+  }
 }
