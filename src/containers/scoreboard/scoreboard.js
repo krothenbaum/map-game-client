@@ -20,7 +20,7 @@ export class ScoreBoard extends Component {
 		const colors = ['first','second','third','fourth','fifth','sixth','seventh','eight','ninth','tenth', 'your-score'];
 		// let rank = 1;
 		this.props.highScores.map((record, rank) => {
-			if (rank == 10) {
+			if (rank === 10) {
 				scores.push(
 					<div className='record last-score' key={rank}>
 						<div className={'rank ' + colors[rank]}>Your Score</div>
