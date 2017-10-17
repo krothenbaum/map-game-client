@@ -6,6 +6,7 @@
     "can-use-dom": "^0.1.0",
     "raf": "^3.3.2",
     "react": "^15.6.1",
+    "react-animated-ellipsis": "^0.3.0",
     "react-animated-number": "^0.4.3",
     "react-dom": "^15.6.1",
     "react-google-maps": "^7.2.0",

@@ -13,6 +13,7 @@ import { resetGame } from '../random/randomMap';
 import RandomCityMap from '../random';
 import ScoreForm from '../scoreform/scoreform';
 import GameStatus from '../gamestatus/gamestatus';
+import ReactAnimatedEllipsis from 'react-animated-ellipsis';
 
 
 import 'whatwg-fetch';
@@ -98,7 +99,7 @@ class YourMap extends Component {
 				<div className='align-center instructions'>
 					<h1>What city is closest?</h1>
 					<p>Please accept the geolocation alert. On the next screen you will be presented with 3 random cities. Guess which city is closest to your current location.</p>
-					{this.props.loading ? <h2>LOADING...</h2> : <button onClick={this.props.changeGameState} className='btn'>Start Game</button>}
+					{this.props.loading ? <h2>LOADING<ReactAnimatedEllipsis/></h2> : <button onClick={this.props.changeGameState} className='btn'>Start Game</button>}
 
 				</div>
 			)

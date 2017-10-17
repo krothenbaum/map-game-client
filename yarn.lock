@@ -91,6 +91,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+animated-ellipsis@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/animated-ellipsis/-/animated-ellipsis-0.0.4.tgz#f25f22fe7bd00fb6e47ab67d12498fffa41094c6"
+
 anser@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.1.tgz#c3641863a962cebef941ea2c8706f2cb4f0716bd"
@@ -5886,6 +5890,14 @@ react-addons-test-utils@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.0.tgz#062d36117fe8d18f3ba5e06eb33383b0b85ea5b9"
 
+react-animated-ellipsis@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-animated-ellipsis/-/react-animated-ellipsis-0.3.0.tgz#c53de5bf197ebe47fa6e08a8c5511dcf8d58ea56"
+  dependencies:
+    animated-ellipsis "0.0.4"
+    prop-types "^15.5.8"
+    react "^15.5.4"
+
 react-animated-number@^0.4.3:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/react-animated-number/-/react-animated-number-0.4.3.tgz#524f4d77da9be87b9af10e19a0c387c7620f154a"
@@ -6064,6 +6076,16 @@ react-test-renderer@^15.5.4:
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
+
+react@^15.5.4:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
+  dependencies:
+    create-react-class "^15.6.0"
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.10"
 
 react@^15.6.1:
   version "15.6.1"
