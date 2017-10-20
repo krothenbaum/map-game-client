@@ -23,7 +23,7 @@ export class ScoreBoard extends Component {
 			if (rank === 10) {
 				scores.push(
 					<div className='record last-score' key={rank}>
-						<div className={'rank ' + colors[rank]}>Your Score</div>
+						<div className={'rank ' + colors[rank]}>Most Recent</div>
 						<div className={'name ' + colors[rank]}>{record.name}</div>
 						<div className={'scoreboard-score ' + colors[rank]}>{record.score}</div>
 					</div>);
