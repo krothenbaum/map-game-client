@@ -81,7 +81,6 @@ class YourMap extends Component {
 	render() {
 		let rands = [];
 		const cities = this.props.randomCities[0];
-		console.log(this.props);
 
 		if(cities){
 			let winner = null;
